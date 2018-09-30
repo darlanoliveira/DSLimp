@@ -14,10 +14,7 @@ C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\DSlimp.Assemb
 C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\DSlimp.TagHelpers.input.cache
 C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\DSlimp.TagHelpers.output.cache
 C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\DSlimp.RazorCoreGenerate.cache
-C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
-C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
 C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
-C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
 C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
 C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
@@ -30,3 +27,4 @@ C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\DSlimp.Views.
 C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\DSlimp.dll
 C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\DSlimp.pdb
 C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\DSlimp.csproj.CopyComplete
+C:\Users\Dr\Desktop\Projetos\DSlimp\DSlimp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Login.g.cshtml.cs
