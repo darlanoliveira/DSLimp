@@ -2601,6 +2601,15 @@
           }
         }
       },
+      "MySqlData/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/com.np.sz.dll": {}
+        },
+        "runtime": {
+          "lib/com.np.sz.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -6765,6 +6774,17 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "MySqlData/1.0.1": {
+      "sha512": "OC5H83mv6TlGll6/gxPan1PYJIZfWYcwr8itNm+IRwo+F52aeS+mGg6nA5fARhQVXCS1MX7eoYzt5zGpjNV35A==",
+      "type": "package",
+      "path": "mysqldata/1.0.1",
+      "files": [
+        "MySql.Data.dll",
+        "lib/com.np.sz.dll",
+        "mysqldata.1.0.1.nupkg.sha512",
+        "mysqldata.nuspec"
       ]
     },
     "NETStandard.Library/2.0.3": {
@@ -11496,7 +11516,8 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "Microsoft.AspNetCore.App >= 2.1.1",
-      "Microsoft.NETCore.App >= 2.1.0"
+      "Microsoft.NETCore.App >= 2.1.0",
+      "mysqldata >= 1.0.1"
     ]
   },
   "packageFolders": {
@@ -11506,11 +11527,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\DSlimp\\DSlimp.csproj",
+      "projectUniqueName": "c:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\DSlimp\\DSlimp.csproj",
       "projectName": "DSlimp",
-      "projectPath": "C:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\DSlimp\\DSlimp.csproj",
+      "projectPath": "c:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\DSlimp\\DSlimp.csproj",
       "packagesPath": "C:\\Users\\Dr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\DSlimp\\obj\\",
+      "outputPath": "c:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\DSlimp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11550,6 +11571,10 @@
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
+          },
+          "mysqldata": {
+            "target": "Package",
+            "version": "[1.0.1, )"
           }
         },
         "imports": [
@@ -11559,5 +11584,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'MySqlData 1.0.1' foi restaurado usando '.NETFramework,Version=v4.6.1' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v2.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "MySqlData",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.1"
+      ]
+    }
+  ]
 }
