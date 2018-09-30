@@ -11506,11 +11506,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\DSlimp.csproj",
+      "projectUniqueName": "C:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\DSlimp\\DSlimp.csproj",
       "projectName": "DSlimp",
-      "projectPath": "C:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\DSlimp.csproj",
+      "projectPath": "C:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\DSlimp\\DSlimp.csproj",
       "packagesPath": "C:\\Users\\Dr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\obj\\",
+      "outputPath": "C:\\Users\\Dr\\Desktop\\Projetos\\DSlimp\\DSlimp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
