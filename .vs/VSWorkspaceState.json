@@ -1,11 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\DSlimp",
-    "\\DSlimp\\Views",
-    "\\DSlimp\\Views\\Home",
-    "\\DSlimp\\wwwroot"
+    "\\DSLimp",
+    "\\DSLimp\\DSLimp",
+    "\\DSLimp\\DSLimp\\Views",
+    "\\DSLimp\\DSLimp\\Views\\Home",
+    "\\DSLimp\\DSLimp\\Views\\Shared"
   ],
-  "SelectedNode": "\\DSlimp\\DSlimp.csproj",
+  "SelectedNode": "\\DSLimp\\DSLimp\\Views\\Home\\Login.cshtml",
   "PreviewInSolutionExplorer": false
 }

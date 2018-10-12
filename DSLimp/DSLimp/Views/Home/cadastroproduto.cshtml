@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>  
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+
+        <title>DS Limp - Gerencial</title>
+
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div id="main" class="container-fluid">
+            <form>
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <label for="CodigoProduto">Código do produto</label>
+                        <input type="text" class="form-control" id="codigoproduto" placeholder="Código">
+                    </div>
+                    
+                    <div class="form-group col-md-2">
+                        <label for="DescricaoProduto">Descrição do produto</label>
+                        <input type="text" class="form-control" id="descricaoproduto" placeholder="Contato no cliente">
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label for="valorcusto">Valor custo</label>
+                        <input type="number" class="form-control" id="valorcusto" placeholder="R$ Custo">
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label for="valorvenda">Valor venda</label>
+                        <input type="number" class="form-control" id="valorvenda" placeholder="R$ Venda">
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label for="campo3">Telefone</label>
+                        <input type="text" class="form-control" id="telefone" placeholder="Telefone">
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label for="campo3">CNPJ</label>
+                        <input type="text" class="form-control" id="cnpj" placeholder="CNPJ">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="campo3">Endereço</label>
+                        <input type="text" class="form-control" id="endereco" placeholder="Endereço">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="campo3">Ponto de referência</label>
+                        <input type="text" class="form-control" id="pontoreferencia" placeholder="Ponto de Referência">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <input type="text" class="form-control" id="pesquisa" placeholder="Pesquisa Rápida">
+                    </div>
+
+                    <button type="button" class="btn btn-default btn-md">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </form>
+            <div class="panel panel-default">
+                <table class="table table-bordered">
+                </table>
+            </div>
+            <div class="btn-group col-md-1 col-md-offset-10" role="group">
+                <button type="button" class="btn btn-info btn-block">Salvar</button>
+            </div>
+            <div class="btn-group col-md-1" role="group">
+                <button type="button" class="btn btn-default btn-block">Cancelar</button>
+            </div>
+        </div>
+    </body>
+    
+</html>
