@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>  
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+
+        <title>DS Limp - Gerencial</title>
+
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
+       
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    </head>
+
+    <body>
+        <div id="main" class="container-fluid">
+            <form>
+                <div class="row">
+                    <div class="form-group col-md-1" style="margin-top: 5px" align="center">
+                        <span class="glyphicon glyphicon-save-file" aria-hidden="true" name="relatorioexcel"></span><BR></BR>
+                        <label>Relatório excel</label>
+                    </div>
+                    
+                    <div class="form-group col-md-2"  style="margin-top: 15px">
+                        <label for="CodigoProduto">Descrição do gasto</label>
+                        <input type="text" class="form-control" id="descricaogasto" name="descricaogasto" placeholder="Digite a descrição aqui">
+                    </div>
+
+                    <div class="form-group col-md-2" style="margin-top: 15px">
+                        <label for="valorcusto">Valor gasto</label>
+                        <input type="number" class="form-control" id="valorgasto" name="valorgasto" placeholder="R$ Gasto">
+                    </div>
+                    
+                    <div class="col-md-3" style="margin-top: 15px">
+                        <div class="form-group">
+                            <label>Foto da nota fiscal</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        <input type="file" id="notafiscal" name="notafiscal">
+                                    </span>
+                                </span>
+                            </div>
+                            <img id='img-upload'/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" style="margin-top: 15px">
+                        <div class="form-group">
+                            <label>Foto do recibo</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        <input type="file" id="recibo" name="recibo">
+                                    </span>
+                                </span>
+                            </div>
+                            <img id='img-upload'/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <table class="table table-bordered"></table>
+                </div>
+            
+                <div>
+                    <label class="col-md-1" for="totalgasto" style="margin-top: 3px">Gasto total</label>
+                    <input type="text" name="gastototal" id="gastototal" style="margin-left: -25px" readonly>
+
+                    <div class="btn-group col-md-1 col-md-offset-9" role="group" style="margin-top: -28px">
+                        <button type="submit" name="salvar" value="1" class="btn btn-info btn-block">Salvar</button>
+                    </div>
+
+                    <div class="btn-group col-md-1" role="group" style="margin-top: -28px">
+                        <button type="submit" class="btn btn-default btn-block" name="cancelar" value="1">Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+    
+</html>
