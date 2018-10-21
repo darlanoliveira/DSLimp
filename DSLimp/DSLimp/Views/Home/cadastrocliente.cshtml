@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>  
     <head>
@@ -17,68 +17,70 @@
 
     <body>
         <div id="main" class="container-fluid">
-            <form>
+            <form action="salvarcliente" method="get">
                 <div class="row">
                     <div class="form-group col-md-2">
                         <label for="Nome">Nome</label>
-                        <input type="text" class="form-control" id="nomecli" placeholder="Nome do cliente">
+                        <input type="text" class="form-control" id="nomecli" name="nomecli" placeholder="Nome do cliente">
                     </div>
-                    
+
                     <div class="form-group col-md-2">
                         <label for="ContatoCliente">Contato no cliente</label>
-                        <input type="text" class="form-control" id="contatocli" placeholder="Contato no cliente">
+                        <input type="text" class="form-control" id="contatocli" name="contatocli" placeholder="Contato no cliente">
                     </div>
 
                     <div class="form-group col-md-2">
                         <label for="campo3">Bairro</label>
-                        <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro">
                     </div>
 
                     <div class="form-group col-md-2">
                         <label for="campo3">Cidade</label>
-                        <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade">
                     </div>
 
                     <div class="form-group col-md-2">
                         <label for="campo3">Telefone</label>
-                        <input type="text" class="form-control" id="telefone" placeholder="Telefone">
+                        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
                     </div>
 
                     <div class="form-group col-md-2">
                         <label for="campo3">CNPJ</label>
-                        <input type="text" class="form-control" id="cnpj" placeholder="CNPJ">
+                        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="campo3">Endereço</label>
-                        <input type="text" class="form-control" id="endereco" placeholder="Endereço">
+                        <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="campo3">Ponto de referência</label>
-                        <input type="text" class="form-control" id="pontoreferencia" placeholder="Ponto de Referência">
+                        <input type="text" class="form-control" id="pontoreferencia" name="pontoreferencia" placeholder="Ponto de Referência">
                     </div>
 
                     <div class="form-group col-md-3">
-                        <input type="text" class="form-control" id="pesquisa" placeholder="Pesquisa Rápida">
+                        <input type="text" class="form-control" id="pesquisa" name="pesquisa" placeholder="Pesquisa Rápida">
                     </div>
 
-                    <button type="button" class="btn btn-default btn-md">
+                    <button type="submit" class="btn btn-default btn-md" name="btnpesquisar" value="1">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                     </button>
                 </div>
+
+                <div class="panel panel-default">
+                    <table class="table table-bordered"></table>
+                </div>
+
+                <div class="btn-group col-md-1 col-md-offset-10" role="group">
+                    <button type="submit" class="btn btn-info btn-block" name="btnsalvar" value="1">Salvar</button>
+                </div>
+
+                <div class="btn-group col-md-1" role="group">
+                    <button type="submit" class="btn btn-default btn-block" name="btncancelar" value="1" >Cancelar</button>
+                </div>
+
             </form>
-            <div class="panel panel-default">
-                <table class="table table-bordered">
-                    
-                </table>
-            </div>
-            <div class="btn-group col-md-1 col-md-offset-10" role="group">
-                <button type="button" class="btn btn-info btn-block">Salvar</button>
-            </div>
-            <div class="btn-group col-md-1" role="group">
-                <button type="button" class="btn btn-default btn-block">Cancelar</button>
-            </div>
         </div>
     </body>
     
