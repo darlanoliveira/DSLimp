@@ -1,10 +1,12 @@
 ﻿using DSLimp.Models;
+using DSLimp.Modulos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DSLimp.Dao
+
+namespace DSLimp.Models
 {
     class ClienteDAO : IClienteDAO, IDisposable
     {

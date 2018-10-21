@@ -1,10 +1,11 @@
-﻿using DSLimp.Dao;
+﻿
+using DSLimp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DSLimp.Models
+namespace DSLimp.Modulos
 {
     public class HomeModel
     {
@@ -21,12 +22,32 @@ namespace DSLimp.Models
             c.Cli_End = endereco;
             c.Cli_Ref = pontoreferencia;
 
+
             using (var repo = new ClienteDAO())
             {
                 repo.Adicionar(c);
             }
 
                 return null;
+        }
+
+        public static dynamic SalvaProduto(string descricaoproduto, double valorcusto, double valorvenda, string telefone, string cnpj, string endereco, string pontoreferencia)
+        {
+            Produto p = new Produto();
+            p.Prod_Desc = descricaoproduto;
+            p.Prod_Val_Cus = valorcusto;
+            p.Prod_Val_Ven = valorvenda;
+            p.Prod_Tel = telefone;
+            p.Prod_Cnpj = cnpj;
+            p.Prod_End = endereco;
+            p.Prod_Ref = pontoreferencia;
+
+            using(var repo = new ProdutoDAO())
+            {
+                repo.Adicionar(p);
+            }
+
+            return null;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DSLimp.Modulos;
 using DSLimp.Models;
 
 namespace DSLimp.Controllers
@@ -25,9 +26,15 @@ namespace DSLimp.Controllers
             return View();
         }
 
-        public IActionResult cadastrocliente()
+        public IActionResult cadastrocliente(int salvo)
         {
-            
+            //Viewbag que define se algo acabou de ser salvo
+            ViewBag.Salvo = 0;
+
+            if(salvo == 1)
+            {
+                ViewBag.Salvo = 1;     
+            }   
 
             return View();
         }
@@ -42,7 +49,7 @@ namespace DSLimp.Controllers
 
             if(btnsalvar == 1) // Caso usuário clique no botão salvar
             {
-                Models.HomeModel.SalvaCliente(nomecli, contatocli, bairro, cidade, telefone, cnpj, endereco, pontoreferencia);
+                Modulos.HomeModel.SalvaCliente(nomecli, contatocli, bairro, cidade, telefone, cnpj, endereco, pontoreferencia);
                 return RedirectToAction("cadastrocliente");
             }
 
@@ -52,8 +59,35 @@ namespace DSLimp.Controllers
             }
 
             return View();
-           // return RedirectToAction("cadastrocliente");
+           
         }
+
+        public IActionResult cadastroproduto()
+        {
+
+
+            return View();
+        }
+
+        public IActionResult salvarproduto(string descricaoproduto,double valorcusto,double valorvenda,string telefone,string cnpj,string endereco,string pontoreferencia,string pesquisa,int salvar,int cancelar,int pesquisar)
+        {
+            if(salvar == 1)
+            {
+                HomeModel.SalvaProduto(descricaoproduto, valorcusto, valorvenda, telefone, cnpj, endereco, pontoreferencia);
+                return RedirectToAction("cadastroproduto");
+            }
+            if(cancelar == 1)
+            {
+                return RedirectToAction("cadastroproduto");
+            }
+            if(pesquisar == 1)
+            {
+                return RedirectToAction("cadastroproduto");
+            }
+
+            return RedirectToAction("cadastroproduto");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

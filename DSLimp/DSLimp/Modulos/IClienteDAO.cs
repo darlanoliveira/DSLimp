@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DSLimp.Models;
+using DSLimp.Modulos;
 
-namespace DSLimp.Models
+namespace DSLimp.Modulos
 {
     interface IClienteDAO
     {
