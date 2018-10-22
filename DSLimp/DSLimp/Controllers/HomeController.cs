@@ -39,6 +39,13 @@ namespace DSLimp.Controllers
             return View();
         }
 
+        public IActionResult Financeiro()
+        {
+          
+
+            return View();
+        }
+
         public IActionResult salvarcliente(string nomecli, string contatocli, string bairro, string cidade, string telefone,
             string cnpj, string endereco, string pontoreferencia, string pesquisa,int btncancelar,int btnsalvar,int btnpesquisa)
         {
