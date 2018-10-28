@@ -18,13 +18,13 @@ namespace DSLimp.Modulos
 
         public void Adicionar(Produto p)
         {
-            contexto.Produtos.Add(p);
+            contexto.produtos.Add(p);
             contexto.SaveChanges();
         }
 
         public void Atualizar(Produto p)
         {
-            contexto.Produtos.Update(p);
+            contexto.produtos.Update(p);
 
             contexto.SaveChanges();
         }
@@ -34,14 +34,14 @@ namespace DSLimp.Modulos
             contexto.Dispose();
         }
 
-        public IList<Produto> Produtos()
+        public IList<Produto> produtos()
         {
-            return contexto.Produtos.ToList();
+            return contexto.produtos.ToList();
         }
 
         public void Remover(Produto p)
         {
-            contexto.Produtos.Remove(p);
+            contexto.produtos.Remove(p);
             contexto.SaveChanges();
         }
     }

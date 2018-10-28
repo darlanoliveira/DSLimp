@@ -18,20 +18,20 @@ namespace DSLimp.Models
         }
         public void Adicionar(Cliente c)
         {            
-                contexto.Clientes.Add(c);
+                contexto.clientes.Add(c);
                 contexto.SaveChanges();
         }
 
         public void Atualizar(Cliente c)
         {
-            contexto.Clientes.Update(c);
+            contexto.clientes.Update(c);
 
             contexto.SaveChanges();
         }
 
-        public IList<Cliente> Clientes()
+        public IList<Cliente> clientes()
         {
-            return contexto.Clientes.ToList();
+            return contexto.clientes.ToList();
         }
 
         public void Dispose()
@@ -41,7 +41,7 @@ namespace DSLimp.Models
 
         public void Remover(Cliente c)
         {
-            contexto.Clientes.Remove(c);
+            contexto.clientes.Remove(c);
             contexto.SaveChanges();
         }
     }

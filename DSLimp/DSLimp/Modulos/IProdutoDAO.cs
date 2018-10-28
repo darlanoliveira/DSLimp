@@ -11,6 +11,6 @@ namespace DSLimp.Modulos
         void Adicionar(Produto p);
         void Atualizar(Produto p);
         void Remover(Produto p);
-        IList<Produto> Produtos();
+        IList<Produto> produtos();
     }
 }

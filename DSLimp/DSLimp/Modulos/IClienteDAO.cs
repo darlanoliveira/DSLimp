@@ -12,6 +12,6 @@ namespace DSLimp.Modulos
         void Adicionar(Cliente c);
         void Atualizar(Cliente c);
         void Remover(Cliente c);
-        IList<Cliente> Clientes();
+        IList<Cliente> clientes();
     }
 }
