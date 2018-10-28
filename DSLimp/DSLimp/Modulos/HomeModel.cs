@@ -2,6 +2,7 @@
 using DSLimp.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -45,6 +46,28 @@ namespace DSLimp.Modulos
             using(var repo = new ProdutoDAO())
             {
                 repo.Adicionar(p);
+            }
+
+            return null;
+        }
+
+        public static dynamic SalvaGastos(string desc, double valor,IFormfile notafiscal, IFormfile recibo)
+        {
+            byte[] nfbytes = notafiscal.ToArray();
+            MemoryStream nb = new MemoryStream(nfbytes);
+
+            byte[] recibobytes = notafiscal.ToArray();
+            MemoryStream rb = new MemoryStream(nfbytes);
+
+            Gasto g = new Gasto();
+            g.Gas_desc = desc;
+            g.Gas_valortotal = valor;
+            g.Gas_ftnf = notafiscal;
+            g.Gas_ftrec = recibo;
+
+            using (var repo = new GastoDAO())
+            {
+                repo.Adicionar(g);
             }
 
             return null;

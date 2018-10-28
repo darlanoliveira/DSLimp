@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DSLimp.Modulos;
 using DSLimp.Models;
+using System.IO;
+using static System.Net.WebRequestMethods;
 
 namespace DSLimp.Controllers
 {
@@ -69,12 +71,28 @@ namespace DSLimp.Controllers
            
         }
 
-        public IActionResult cadastroproduto()
+        public IActionResult CadastroProduto()
         {
 
 
             return View();
         }
+
+        public IActionResult CadastroGastos()
+        {
+
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SalvaGastos(string descricaogasto,double valorgasto, IFormfile notafiscal,IFormfile recibo)
+        {
+
+            return RedirectToAction("financeiro");
+        }
+
+
 
         public IActionResult salvarproduto(string descricaoproduto,double valorcusto,double valorvenda,string telefone,string cnpj,string endereco,string pontoreferencia,string pesquisa,int salvar,int cancelar,int pesquisar)
         {
