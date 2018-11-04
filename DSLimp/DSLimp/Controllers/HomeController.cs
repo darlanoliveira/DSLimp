@@ -1,26 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using DSLimp.Models;
 using DSLimp.Modulos;
-using DSLimp.Models;
-using System.IO;
-using static System.Net.WebRequestMethods;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace DSLimp.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public IActionResult Index()
         {
-            return RedirectToAction("Login");
+            return RedirectToAction("cadastrocliente");
         }
+
+
+
+        public LoginViewModel loginData { get; set; }
 
         public IActionResult Login(string email, string senha)
         {
-            if(email == "123")
+            if (email == "123")
             {
                 return RedirectToAction("cadastrocliente");
             }
@@ -28,6 +32,45 @@ namespace DSLimp.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Logar(LoginViewModel vm)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                var isValid = (vm.Email == "usuario@usuario.com" && vm.Senha == "123");
+                if(!isValid)
+                {
+                    ModelState.AddModelError("", "Usuário ou senha inválido");
+                    return RedirectToAction("Login");
+                }
+
+                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);
+                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, vm.Email));
+                identity.AddClaim(new Claim(ClaimTypes.Name, vm.Email));
+                var principal = new ClaimsPrincipal(identity);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = vm.RememberMe });
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "username or password is blank");
+                return RedirectToAction("Login");
+            }
+
+
+            return View();
+        }
+
+        public async Task<IActionResult> Deslogar()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Login");
+        }
+
+        [Authorize]
         public IActionResult cadastrocliente(int salvo)
         {
             //Viewbag que define se algo acabou de ser salvo
@@ -40,14 +83,14 @@ namespace DSLimp.Controllers
 
             return View();
         }
-
+        [Authorize]
         public IActionResult Financeiro()
         {
           
 
             return View();
         }
-
+        [Authorize]
         public IActionResult salvarcliente(string nomecli, string contatocli, string bairro, string cidade, string telefone,
             string cnpj, string endereco, string pontoreferencia, string pesquisa,int btncancelar,int btnsalvar,int btnpesquisa)
         {
@@ -70,7 +113,7 @@ namespace DSLimp.Controllers
             return View();
            
         }
-
+        [Authorize]
         public IActionResult CadastroProduto()
         {
 
@@ -85,15 +128,15 @@ namespace DSLimp.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult SalvaGastos(string descricaogasto,double valorgasto, IFormfile notafiscal,IFormfile recibo)
-        {
+        /*  [HttpPost]
+          public IActionResult SalvaGastos(string descricaogasto,double valorgasto, IFormfile notafiscal,IFormfile recibo)
+          {
 
-            return RedirectToAction("financeiro");
-        }
+              return RedirectToAction("financeiro");
+          }*/
 
 
-
+        [Authorize]
         public IActionResult salvarproduto(string descricaoproduto,double valorcusto,double valorvenda,string telefone,string cnpj,string endereco,string pontoreferencia,string pesquisa,int salvar,int cancelar,int pesquisar)
         {
             if(salvar == 1)

@@ -1,4 +1,4 @@
-﻿
+﻿@model LoginViewModel
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,23 +27,27 @@
                         <h3 class="panel-title">Login</h3>
                     </div>
                     <div class="panel-body">
-                        <form accept-charset="UTF-8" role="form" method="post" action="login">
+                        <form accept-charset="UTF-8" role="form" method="post" asp-action="Logar" asp-controller="Home">
+                            <div asp-validation-summary="All"></div>
                             <img src="" alt="" align="center">
                             <fieldset>
                                 <div class="form-group">
-                                    <label>Login</label>
-                                    <input class="form-control" placeholder="Login" name="email" type="text">
+                                    <label asp-for="Email"></label>
+                                    <input class="form-control" asp-for="Email" placeholder="Login">
+                                    <span asp-validation-for="Email"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label>Senha</label>
-                                    <input class="form-control" placeholder="Senha" name="senha" type="password" value="">
+                                    <label asp-for="Senha"></label>
+                                    <input class="form-control" asp-for="Senha" placeholder="Senha">
+                                    <span asp-validation-for="Senha"></span>
                                 </div>
                                 <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me"> Salvar e-mail e senha
+                                    <label asp-for="RememberMe">
+                                        <input asp-for="RememberMe"  type="checkbox" > Salvar e-mail e senha
+                                        <span asp-validation-for="RememberMe"></span>
                                     </label>
                                 </div>
-                                <input class="btn btn-lg btn-info btn-block" type="submit" value="Entrar">
+                                <input class="btn btn-lg btn-info btn-block" type="submit" value="Log in">
                                 <input class="btn btn-lg btn-danger btn-block" type="submit" value="Cancelar">
                             </fieldset>
                         </form>

@@ -15,8 +15,14 @@ namespace DSLimp.Modulos
             //Quantas classes bean vc criar deve ter um desse
             public DbSet<Cliente> clientes { get; set; }
             public DbSet<Produto> produtos { get; set; }
-            public DbSet<Gasto> gastos { get; set; }
+            public DbSet<LoginViewModel> usuarios { get; set; }
+            
+         /*  public DbSet<Gasto> gastos { get; set; }*/
 
+         public LojaContext()
+        {
+
+        }
 
         //Essa parte será igual sempre
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

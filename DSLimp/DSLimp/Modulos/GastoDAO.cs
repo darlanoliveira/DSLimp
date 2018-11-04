@@ -6,7 +6,7 @@ using DSLimp.Models;
 
 namespace DSLimp.Modulos
 {
-    public class GastoDAO : IGastoDAO, IDisposable
+   /* public class GastoDAO : IGastoDAO, IDisposable
     {
         private LojaContext contexto;
 
@@ -43,5 +43,5 @@ namespace DSLimp.Modulos
             contexto.gastos.Remove(g);
             contexto.SaveChanges();
         }
-    }
+    }*/
 }

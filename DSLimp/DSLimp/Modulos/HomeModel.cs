@@ -51,7 +51,14 @@ namespace DSLimp.Modulos
             return null;
         }
 
-        public static dynamic SalvaGastos(string desc, double valor,IFormfile notafiscal, IFormfile recibo)
+        public static dynamic BuscaUsuario (LoginViewModel vm)
+        {
+            
+
+            return null;
+        }
+
+      /*  public static dynamic SalvaGastos(string desc, double valor,IFormfile notafiscal, IFormfile recibo)
         {
             byte[] nfbytes = notafiscal.ToArray();
             MemoryStream nb = new MemoryStream(nfbytes);
@@ -71,6 +78,6 @@ namespace DSLimp.Modulos
             }
 
             return null;
-        }
+        }*/
     }
 }
