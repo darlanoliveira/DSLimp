@@ -33,12 +33,12 @@
 
                 <div class="form-group col-md-2">
                     <label for="valorcusto">Valor custo</label>
-                    <input type="number" class="form-control" id="valorcusto" name="valorcusto" placeholder="R$ Custo">
+                    <input type="number" class="form-control" id="valorcusto"  onblur="formatarDinheiro(this)" name="valorcusto" placeholder="R$ Custo">
                 </div>
 
                 <div class="form-group col-md-2">
                     <label for="valorvenda">Valor venda</label>
-                    <input type="number" class="form-control" id="valorvenda" name="valorvenda" placeholder="R$ Venda">
+                    <input type="number" class="form-control"  id="valorvenda" step=".01" name="valorvenda" onblur="formatarDinheiro(this)" placeholder="R$ Venda">
                 </div>
 
                 <div class="form-group col-md-2">
@@ -82,6 +82,16 @@
         </form>
     </div>
 
+    <script>
+     
+        function formatarDinheiro(x) {
+             
+                 x.value = parseFloat(x.value.replace(/,/g, ""))
+                .toFixed(2)
+                .toString()
+                .replace(/\B(?=(\d{10})+(?!\d))/g, ",");      
+        }
+    </script>
 </body>
 
 </html>

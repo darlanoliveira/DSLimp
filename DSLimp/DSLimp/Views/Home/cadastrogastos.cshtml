@@ -36,7 +36,7 @@
 
                 <div class="form-group col-md-2" style="margin-top: 15px">
                     <label for="valorcusto">Valor gasto</label>
-                    <input type="number" class="form-control" id="valorgasto" name="valorgasto" placeholder="R$ Gasto">
+                    <input type="number" class="form-control" id="valorgasto" name="valorgasto" onblur="formatarDinheiro(this)" placeholder="R$ Gasto">
                 </div>
 
                 <div class="col-md-3" style="margin-top: 15px">
@@ -86,6 +86,17 @@
             </div>
         </form>
     </div>
+
+    <script>
+
+        function formatarDinheiro(x) {
+
+            x.value = parseFloat(x.value.replace(/,/g, ""))
+                .toFixed(2)
+                .toString()
+                .replace(/\B(?=(\d{10})+(?!\d))/g, ",");
+        }
+    </script>
 </body>
 
 </html>

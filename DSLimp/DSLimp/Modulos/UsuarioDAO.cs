@@ -6,11 +6,11 @@ using DSLimp.Models;
 
 namespace DSLimp.Modulos
 {
-    public class UsuarioDAO : IUsuarioDAO, IDisposable
+    public class UsuarioDAO /*: IUsuarioDAO, IDisposable*/
     {
         private LojaContext contexto;
 
-        public UsuarioDAO()
+       /* public UsuarioDAO()
         {
             this.contexto = new LojaContext();
         }
@@ -44,7 +44,7 @@ namespace DSLimp.Modulos
            
             return contexto.usuarios.ToList();
         }
-
+        */
 
 
 
