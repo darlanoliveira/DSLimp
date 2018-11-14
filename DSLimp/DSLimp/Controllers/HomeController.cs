@@ -145,6 +145,7 @@ namespace DSLimp.Controllers
         {
             //Viewbag que define se algo acabou de ser salvo
             ViewBag.Salvo = 0;
+            ViewBag.titulo = "Cadastro de Cliente";
 
             if(salvo == 1)
             {
@@ -156,7 +157,7 @@ namespace DSLimp.Controllers
         [Authorize]
         public IActionResult Financeiro()
         {
-          
+            ViewBag.titulo = "Financeiro";
 
             return View();
         }
@@ -186,14 +187,14 @@ namespace DSLimp.Controllers
         [Authorize]
         public IActionResult CadastroProduto()
         {
-
+            ViewBag.titulo = "Cadastro de Produto";
 
             return View();
         }
 
         public IActionResult CadastroGastos()
         {
-
+            ViewBag.titulo = "Cadastro de Gastos";
 
             return View();
         }
