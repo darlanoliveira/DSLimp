@@ -25,9 +25,11 @@
         <form>
             <div class="row">
                 <div class="form-group col-md-1" style="margin-top: 25px" align="center">
-               <a asp-action="cadastrogastos"><button type="button" class="btn btn-default btn-lg">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </button></a>
+                    <a asp-action="cadastrogastos">
+                        <button type="button" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </a>
                 </div>
 
                 <div class="form-group col-md-1" style="margin-top: 5px; margin-left: -30px" align="center">
@@ -50,30 +52,41 @@
                         <input name="mesatual" type="checkbox">Mês atual
                     </label>
                 </div>
+            </div>
 
-                <div class="panel panel-default">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">Data</th>
-                                <th scope="col">Descrição</th>
-                                <th scope="col">Tipo</th>
-                                <th scope="col">Comprovante venda</th>
-                                <th scope="col">Recibo</th>
-                                <th scope="col">Nota fiscal</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                
-                <div class="form-group" style="margin-left: 25px">
-                    <label for="totalsaida" style="margin-top: 3px">Saída total</label>
-                    <input type="text" name="saidatotal" id="saidatotal" readonly>
-                    <label for="totalsaida" style="margin-top: 3px; margin-left: 20px">Entrada total</label>
-                    <input type="text" name="saidatotal" id="saidatotal" readonly>
-                    <label for="totalsaida" style="margin-top: 3px; margin-left: 20px">Lucro total</label>
-                    <input type="text" name="saidatotal" id="saidatotal" readonly>
-                </div>
+            <div class="panel panel-default">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="text-align: center">Data</th>
+                            <th scope="col" style="text-align: center">Descrição</th>
+                            <th scope="col" style="text-align: center">Tipo</th>
+                            <th scope="col" style="text-align: center">Comprovante venda</th>
+                            <th scope="col" style="text-align: center">Recibo</th>
+                            <th scope="col" style="text-align: center">Nota fiscal</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td id="data" name="data"></td>
+                            <td id="descricao" name="descricao"></td>
+                            <td id="tipo" name="tipo"></td>
+                            <td id="comprovante" name="comprovante"></td>
+                            <td id="recibo" name="recibo"></td>
+                            <td id="notafiscal" name="notafiscal"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-group">
+                <label for="totalsaida" style="margin-top: 3px">Saída total</label>
+                <input type="text" name="saidatotal" id="saidatotal" readonly>
+                <label for="totalentrada" style="margin-top: 3px; margin-left: 20px">Entrada total</label>
+                <input type="text" name="entradatotal" id="entradatotal" readonly>
+                <label for="totallucro" style="margin-top: 3px; margin-left: 20px">Lucro total</label>
+                <input type="text" name="lucrototal" id="lucrototal" readonly>
             </div>
         </form>
     </div>

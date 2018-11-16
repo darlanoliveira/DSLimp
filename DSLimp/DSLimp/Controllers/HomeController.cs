@@ -87,6 +87,22 @@ namespace DSLimp.Controllers
         }
 
         [Authorize]
+        public IActionResult estoque()
+        {
+            ViewBag.titulo = "Estoque";
+
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult vendas()
+        {
+            ViewBag.titulo = "Vendas";
+
+            return View();
+        }
+
+        [Authorize]
         public IActionResult cadastrocliente(int salvo)
         {
             //Viewbag que define se algo acabou de ser salvo
