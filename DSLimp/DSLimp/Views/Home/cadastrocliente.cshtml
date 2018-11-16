@@ -65,13 +65,26 @@
                     <input type="text" class="form-control" id="pesquisa" name="pesquisa" placeholder="Pesquisa Rápida">
                 </div>
 
-                <button type="submit" class="btn btn-default btn-md" name="btnpesquisar" value="1">
+                <button type="submit" class="btn btn-default btn-md" name="btnpesquisar" value="1" style="height:35px">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </button>
             </div>
 
             <div class="panel panel-default">
-                <table class="table table-bordered"></table>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome do cliente</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col">Bairro</th>
+                            <th scope="col">Cidade</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">CNPJ</th>
+                            <th scope="col">Contato no cliente</th>
+                            <th scope="col">Ponto de referência</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
 
             <div class="btn-group col-md-1 col-md-offset-10" role="group">

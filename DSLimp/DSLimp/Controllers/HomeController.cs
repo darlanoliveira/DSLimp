@@ -23,7 +23,7 @@ namespace DSLimp.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            return RedirectToAction("cadastrocliente");
+            return RedirectToAction("resumodiario");
         }
 
 
@@ -34,7 +34,7 @@ namespace DSLimp.Controllers
         {
             if (email == "123")
             {
-                return RedirectToAction("cadastrocliente");
+                return RedirectToAction("resumodiario");
             }
 
             return View();
@@ -76,6 +76,14 @@ namespace DSLimp.Controllers
         {
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login");
+        }
+
+        [Authorize]
+        public IActionResult resumodiario()
+        {
+            ViewBag.titulo = "Resumo";
+
+            return View();
         }
 
         [Authorize]
