@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+@{
+Layout = "~/Views/Shared/_Layoutpagpadrao.cshtml";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="An interactive getting started guide for Brackets.">
+
+    <title>DS Limp - Gerencial</title>
+
+    <style>
+        .menos-button {
+            color: #FFF;
+            width: 30px;
+            border: none;
+            height: 25px;
+            padding: 0 10px;
+            cursor: pointer;
+            line-height: 20px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 20px;
+            background-color: darkred;
+            text-transform: uppercase;
+        }
+        
+        .mais-button {
+            color: #FFF;
+            width: 30px;
+            border: none;
+            height: 25px;
+            padding: 0 10px;
+            cursor: pointer;
+            line-height: 20px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 20px;
+            text-transform: uppercase;
+            background-color: darkgreen;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+    <div id="main" class="container-fluid">
+        <form>
+            <hr/>
+            <h4>Registro de venda</h4>
+            <hr/>
+            <div class="row">
+                <div class="form-group col-md-2">
+                    <label for="cliente">Cliente</label>
+                    <input list="clientes" name="cliente" class="form-control" placeholder="Selecione um cliente">
+                    <datalist id="clientes">
+                        <option value="Cliente 1"/>
+                        <option value="Cliente 2"/>
+                        <option value="Teste 1"/>
+                        <option value="Teste 2"/>
+                    </datalist>
+                </div> 
+                
+                <div class="form-group col-md-2">
+                    <label for="campo3">CNPJ</label>
+                    <input type="text" class="form-control" id="cnpj" name="cnpj" readonly>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="campo3">Endereço</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco" readonly>
+                </div>
+                
+                <div class="form-group col-md-4">
+                    <label for="campo3">Ponto de referência</label>
+                    <input type="text" class="form-control" id="pontoreferencia" name="pontoreferencia" readonly>
+                </div>
+            </div>
+            
+            <hr/>
+            
+            <div class="panel panel-default">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="text-align:center">Código do produto</th>
+                            <th scope="col" style="text-align:center">Descrição do produto</th>
+                            <th scope="col" style="text-align:center">Quantidade</th>
+                            <th scope="col" style="text-align:center">Valor</th>
+                            <th scope="col" style="text-align:center">Em estoque</th>
+                            <th scope="col" style="text-align:center">Saldo em estoque após venda</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="codigoproduto" name="codigoproduto" width="165px"><input list="codigosprodutos" name="codigoproduto" class="form-control" placeholder="Selecione o código" style="width:165px"></td>
+                            <td id="descricaoproduto" name="descricaoproduto"></td>
+                            <td id="quantidade" name="quantidade" width="118px"><button class="menos-button">-</button><a> </a><input type="text" name="qtd" id="qtd" style="width:30px" readonly><a> </a><button   class="mais-button">+</button></td>
+                            <td id="valor" name="valor" width="200px"></td>
+                            <td id="emestoque" name="emestoque" width="118px"></td>
+                            <td id="saldoestoque" name="saldoestoque" width="300px"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-group">
+                <label for="itensquantidade" style="margin-top: 3px">Quantidade de itens</label>
+                <input type="text" name="quantidadeitens" id="quantidadeitens" readonly>
+                <label for="totalvalor" style="margin-top: 3px; margin-left: 20px">Valor total</label>
+                <input type="text" name="valortotal" id="valortotal" readonly>
+
+                <div class="btn-group col-md-1 col-md-offset-10" role="group" style="margin-top: -28px">
+                    <button type="submit" name="confirmar" value="1" class="btn btn-info btn-block">Confirmar</button>
+                </div>
+
+                <div class="btn-group col-md-1" role="group" style="margin-top: -28px">
+                    <button type="submit" class="btn btn-default btn-block" name="cancelar" value="1">Cancelar</button>
+                </div>
+                <datalist id="codigosprodutos">
+                    <option value="teste"/>
+                    <option value="teste2"/>
+                    <option value="cod"/>
+                    <option value="cod2"/>
+                </datalist>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

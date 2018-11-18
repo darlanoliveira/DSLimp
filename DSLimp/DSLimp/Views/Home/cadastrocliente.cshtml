@@ -65,13 +65,38 @@
                     <input type="text" class="form-control" id="pesquisa" name="pesquisa" placeholder="Pesquisa Rápida">
                 </div>
 
-                <button type="submit" class="btn btn-default btn-md" name="btnpesquisar" value="1">
+                <button type="submit" class="btn btn-default btn-md" name="btnpesquisar" value="1" style="height:35px">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </button>
             </div>
 
             <div class="panel panel-default">
-                <table class="table table-bordered"></table>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="text-align: center">Nome do cliente</th>
+                            <th scope="col" style="text-align: center">Endereço</th>
+                            <th scope="col" style="text-align: center">Bairro</th>
+                            <th scope="col" style="text-align: center">Cidade</th>
+                            <th scope="col" style="text-align: center">Telefone</th>
+                            <th scope="col" style="text-align: center">CNPJ</th>
+                            <th scope="col" style="text-align: center">Contato no cliente</th>
+                            <th scope="col" style="text-align: center">Ponto de referência</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <rt>
+                            <td id="nomecliente" name="nomecliente"></td>
+                            <td id="endereco" name="endereco"></td>
+                            <td id="bairro" name="bairro"></td>
+                            <td id="cidade" name="cidade"></td>
+                            <td id="telefone" name="telefone"></td>
+                            <td id="cnpj" name="cnpj"></td>
+                            <td id="contatocliente" name="contatocliente"></td>
+                            <td id="pontoreferencia" name="pontoreferencia"></td>
+                        </rt>
+                    </tbody>
+                </table>
             </div>
 
             <div class="btn-group col-md-1 col-md-offset-10" role="group">

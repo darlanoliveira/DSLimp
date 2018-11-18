@@ -23,7 +23,7 @@ namespace DSLimp.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            return RedirectToAction("cadastrocliente");
+            return RedirectToAction("resumodiario");
         }
 
 
@@ -34,70 +34,8 @@ namespace DSLimp.Controllers
         {
             if (email == "123")
             {
-                return RedirectToAction("cadastrocliente");
+                return RedirectToAction("resumodiario");
             }
-
-            return View();
-        }
-
-        public IActionResult teste()
-        {
-             string[] Scopes = { CalendarService.Scope.CalendarReadonly };
-             string ApplicationName = "Google Calendar API .NET Quickstart";
-
-            UserCredential credential;
-
-            using (var stream =
-                new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
-            {
-                // The file token.json stores the user's access and refresh tokens, and is created
-                // automatically when the authorization flow completes for the first time.
-                string credPath = "token.json";
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets,
-                    Scopes,
-                    "user",
-                    CancellationToken.None,
-                    new FileDataStore(credPath, true)).Result;
-                Console.WriteLine("Credential file saved to: " + credPath);
-            }
-
-            // Create Google Calendar API service.
-            var service = new CalendarService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = ApplicationName,
-            });
-
-            // Define parameters of request.
-            EventsResource.ListRequest request = service.Events.List("primary");
-            request.TimeMin = DateTime.Now;
-            request.ShowDeleted = false;
-            request.SingleEvents = true;
-            request.MaxResults = 10;
-            request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
-
-            // List events.
-            Events events = request.Execute();
-            Console.WriteLine("Upcoming events:");
-            if (events.Items != null && events.Items.Count > 0)
-            {
-                foreach (var eventItem in events.Items)
-                {
-                    string when = eventItem.Start.DateTime.ToString();
-                    if (String.IsNullOrEmpty(when))
-                    {
-                        when = eventItem.Start.Date;
-                    }
-                   // Console.WriteLine("{0} ({1})", eventItem.Summary, when);
-                }
-            }
-            else
-            {
-                Console.WriteLine("No upcoming events found.");
-            }
-            Console.Read();
-
 
             return View();
         }
@@ -141,10 +79,35 @@ namespace DSLimp.Controllers
         }
 
         [Authorize]
+        public IActionResult resumodiario()
+        {
+            ViewBag.titulo = "Resumo";
+
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult estoque()
+        {
+            ViewBag.titulo = "Estoque";
+
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult vendas()
+        {
+            ViewBag.titulo = "Vendas";
+
+            return View();
+        }
+
+        [Authorize]
         public IActionResult cadastrocliente(int salvo)
         {
             //Viewbag que define se algo acabou de ser salvo
             ViewBag.Salvo = 0;
+            ViewBag.titulo = "Clientes";
 
             if(salvo == 1)
             {
@@ -156,10 +119,19 @@ namespace DSLimp.Controllers
         [Authorize]
         public IActionResult Financeiro()
         {
-          
+            ViewBag.titulo = "Financeiro";
 
             return View();
         }
+
+        [Authorize]
+        public IActionResult Agenda()
+        {
+            ViewBag.titulo = "Agenda";
+
+            return View();
+        }
+
         [Authorize]
         public IActionResult salvarcliente(string nomecli, string contatocli, string bairro, string cidade, string telefone,
             string cnpj, string endereco, string pontoreferencia, string pesquisa,int btncancelar,int btnsalvar,int btnpesquisa)
@@ -186,14 +158,14 @@ namespace DSLimp.Controllers
         [Authorize]
         public IActionResult CadastroProduto()
         {
-
+            ViewBag.titulo = "Produtos";
 
             return View();
         }
 
         public IActionResult CadastroGastos()
         {
-
+            ViewBag.titulo = "Gastos";
 
             return View();
         }
