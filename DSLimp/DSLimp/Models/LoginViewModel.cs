@@ -4,10 +4,12 @@ using System.Security.Claims;
 namespace DSLimp.Models
 {
     public class LoginViewModel
-    {   
+    {
 
+        [Key]
+        public int Usu_Cod { get; internal set; }
 
-
+        public string Usu_Unome { get; internal set; }
 
         [Required] //Obriga preenchimento
         [EmailAddress] 

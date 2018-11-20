@@ -22,7 +22,7 @@
 
 <body>
     <div id="main" class="container-fluid">
-        <form method="post" action="salvagastos">
+        <form asp-controller="Home" asp-action="salvargastos" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="form-group col-md-1" style="margin-top: 5px" align="center">
                     <span class="glyphicon glyphicon-save-file" aria-hidden="true" name="relatorioexcel"></span><BR></BR>
@@ -36,7 +36,7 @@
 
                 <div class="form-group col-md-2" style="margin-top: 15px">
                     <label for="valorcusto">Valor gasto</label>
-                    <input type="number" class="form-control" id="valorgasto" name="valorgasto" onblur="formatarDinheiro(this)" placeholder="R$ Gasto">
+                    <input type="number" class="form-control" id="valorgasto" step=".01" name="valorgasto" onblur="formatarDinheiro(this)" placeholder="R$ Gasto">
                 </div>
 
                 <div class="col-md-3" style="margin-top: 15px">
@@ -81,13 +81,16 @@
                     </thead>
                     
                     <tbody>
+                        @foreach (var item in ViewBag.listaDeGastos)
+                        {
                         <tr>
-                            <td id="data" name="data"></td>
-                            <td id="descricao" name="descricao"></td>
-                            <td id="valor" name="valor"></td>
-                            <td id="recibo" name="recibo"></td>
-                            <td id="notafiscal" name="notafiscal"></td>
+                            <td ></td>
+                            <td >@item.Gas_desc</td>
+                            <td >@item.Gas_valortotal</td>
+                            <td ></td>
+                            <td ></td>
                         </tr>
+                        }
                     </tbody>
                 </table>
             </div>

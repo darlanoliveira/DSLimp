@@ -3,18 +3,13 @@ using DSLimp.Modulos;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Diagnostics;
+using System.IO;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Calendar.v3;
-using Google.Apis.Calendar.v3.Data;
-using Google.Apis.Services;
-using Google.Apis.Util.Store;
-using System.IO;
-using System.Threading;
-using System;
 
 namespace DSLimp.Controllers
 {
@@ -47,7 +42,8 @@ namespace DSLimp.Controllers
 
             if (ModelState.IsValid)
             {
-                var isValid = (vm.Email == "usuario@usuario.com" && vm.Senha == "123");
+                 var isValid = (vm.Email == "usuario@usuario.com" && vm.Senha == "123");
+               // var isValid = HomeModel.RecuperarUsuario(vm.Email, vm.Senha);
                 if(!isValid)
                 {
                     ModelState.AddModelError("", "Usuário ou senha inválido");
@@ -109,6 +105,8 @@ namespace DSLimp.Controllers
             ViewBag.Salvo = 0;
             ViewBag.titulo = "Clientes";
 
+            ViewBag.listaDeClientes = HomeModel.RecuperarClientes();
+
             if(salvo == 1)
             {
                 ViewBag.Salvo = 1;     
@@ -158,6 +156,7 @@ namespace DSLimp.Controllers
         [Authorize]
         public IActionResult CadastroProduto()
         {
+            ViewBag.listaDeProdutos = HomeModel.RecuperarProdutos();
             ViewBag.titulo = "Produtos";
 
             return View();
@@ -166,24 +165,45 @@ namespace DSLimp.Controllers
         public IActionResult CadastroGastos()
         {
             ViewBag.titulo = "Gastos";
-
+            ViewBag.listaDeGastos = HomeModel.RecuperarGastos();
             return View();
         }
 
-        /*  [HttpPost]
-          public IActionResult SalvaGastos(string descricaogasto,double valorgasto, IFormfile notafiscal,IFormfile recibo)
+          [HttpPost]
+          public IActionResult SalvarGastos(string descricaogasto,string valorgasto,IFormFile notafiscal,IFormFile recibo)
           {
+            var valorgastoD = double.Parse(valorgasto, System.Globalization.CultureInfo.InvariantCulture);
 
-              return RedirectToAction("financeiro");
-          }*/
+            var arquivoNF = notafiscal.OpenReadStream();
+            MemoryStream flnf = new MemoryStream();
+            arquivoNF.CopyTo(flnf);
+            byte[] nfArr = flnf.ToArray();
+
+            var arquivoRec = recibo.OpenReadStream();
+            MemoryStream flrec = new MemoryStream();
+            arquivoRec.CopyTo(flrec);
+            byte[] recArr = flrec.ToArray();
+
+            HomeModel.SalvaGastos(descricaogasto, valorgastoD, nfArr, recArr);
+
+            return RedirectToAction("financeiro");
+          }
 
 
         [Authorize]
-        public IActionResult salvarproduto(string descricaoproduto,double valorcusto,double valorvenda,string telefone,string cnpj,string endereco,string pontoreferencia,string pesquisa,int salvar,int cancelar,int pesquisar)
+        public IActionResult salvarproduto(string descricaoproduto,string valorcusto,string valorvenda,string linhaproduto,IFormFile fotoproduto,string pesquisa,int salvar,int cancelar,int pesquisar)
         {
             if(salvar == 1)
             {
-                HomeModel.SalvaProduto(descricaoproduto, valorcusto, valorvenda, telefone, cnpj, endereco, pontoreferencia);
+                var valorcustoD = double.Parse(valorcusto, System.Globalization.CultureInfo.InvariantCulture);
+                var valorvendaD = double.Parse(valorvenda, System.Globalization.CultureInfo.InvariantCulture);
+
+                var arquivo = fotoproduto.OpenReadStream();
+                MemoryStream fl = new MemoryStream();
+                arquivo.CopyTo(fl);
+                byte[] ftArr = fl.ToArray();
+
+                HomeModel.SalvaProduto(descricaoproduto, valorcustoD, valorvendaD, linhaproduto,ftArr);
                 return RedirectToAction("cadastroproduto");
             }
             if(cancelar == 1)

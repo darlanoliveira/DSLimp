@@ -25,7 +25,7 @@
 
 <body>
     <div id="main" class="container-fluid">
-        <form action="salvarproduto" method="post">
+        <form asp-controller="Home" asp-action="salvarproduto" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="form-group col-md-2">
                     <label for="CodigoProduto">Código do produto</label>
@@ -39,18 +39,18 @@
 
                 <div class="form-group col-md-2">
                     <label for="valorcusto">Valor custo</label>
-                    <input type="number" class="form-control" id="valorcusto"  onblur="formatarDinheiro(this)" name="valorcusto" placeholder="R$ Custo">
+                    <input type="number" class="form-control" id="valorcusto" step=".01" onblur="formatarDinheiro(this)" name="valorcusto" placeholder="R$ Custo">
                 </div>
 
                 <div class="form-group col-md-2">
                     <label for="valorvenda">Valor venda</label>
-                    <input type="number" class="form-control"  id="valorvenda" step=".01" name="valorvenda" onblur="formatarDinheiro(this)" placeholder="R$ Venda">
+                    <input type="number" class="form-control" id="valorvenda" step=".01" name="valorvenda" onblur="formatarDinheiro(this)" placeholder="R$ Venda">
                 </div>
 
                 <div class="form-group col-md-1" align="center">
                     <label for="fotoproduto">Foto produto</label>
-                    <input type="file" id="fotoproduto" name="fotoproduto" hidden="hidden">
-                    <button class="glyphicon glyphicon-paperclip" aria-hidden="true" id="upload" style="width:35px; height:35px"></button>
+                    <input type="file" id="fotoproduto" name="fotoproduto">
+                 <!---  /* <button class="glyphicon glyphicon-paperclip" aria-hidden="true" id="upload" style="width:35px; height:35px"></button>
                     <script type="text/javascript">
                         const foto = document.getElementById("fotoproduto");
                         const uploadbtn = document.getElementById("upload");
@@ -58,17 +58,17 @@
                         uploadbtn.addEventListener("click", function () {
                             foto.click();
                         });
-                    </script>
+                    </script>*/-->
                 </div>
 
                 <div class="form-group col-md-2">
                     <label for="linhaproduto">Linha produto</label>
                     <input list="linhasprodutos" name="linhaproduto" class="form-control" placeholder="Selecione uma linha">
                     <datalist id="linhasprodutos">
-                        <option value="Limpeza leve"/>
-                        <option value="Limpeza pesada"/>
-                        <option value="Roupas"/>
-                        <option value="Vidros"/>
+                        <option value="Limpeza leve" />
+                        <option value="Limpeza pesada" />
+                        <option value="Roupas" />
+                        <option value="Vidros" />
                     </datalist>
                 </div>
 
@@ -95,15 +95,20 @@
                     </thead>
                     
                     <tbody>
-                        <tr>
-                            <td id="codigoproduto" name="codigoproduto"></td>
-                            <td id="descricaoproduto" name="descricaoproduto"></td>
-                            <td id="valorcusto" name="valorcusto"></td>
-                            <td id="valorvenda" name="valorvenda"></td>
-                            <td id="fotoproduto" name="fotoproduto"></td>
-                            <td id="linhaproduto" name="linhaproduto"></td>
+                       @foreach(var item in ViewBag.listaDeProdutos)
+                       {
+                        <tr>    
+                            <td >@item.Id_Pro</td>
+                            <td >@item.Prod_Desc</td>
+                            <td >R$ @item.Prod_Val_Cus</td>
+                            <td >R$ @item.Prod_Val_Ven</td>
+                            <td ></td>
+                            <td >@item.Prod_Tipo</td>
                         </tr>
+                        }
+
                     </tbody>
+                    
                 </table>
             </div>
             <div class="btn-group col-md-1 col-md-offset-10" role="group">
@@ -123,6 +128,12 @@
                 .toFixed(2)
                 .toString()
                 .replace(/\B(?=(\d{10})+(?!\d))/g, ",");      
+        }
+        function virgula(x)
+        {
+            var r = getElementById(x);
+            r.replace(',','.');
+
         }
     </script>
 </body>

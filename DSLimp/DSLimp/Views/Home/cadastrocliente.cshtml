@@ -85,16 +85,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <rt>
-                            <td id="nomecliente" name="nomecliente"></td>
-                            <td id="endereco" name="endereco"></td>
-                            <td id="bairro" name="bairro"></td>
-                            <td id="cidade" name="cidade"></td>
-                            <td id="telefone" name="telefone"></td>
-                            <td id="cnpj" name="cnpj"></td>
-                            <td id="contatocliente" name="contatocliente"></td>
-                            <td id="pontoreferencia" name="pontoreferencia"></td>
-                        </rt>
+
+                        @foreach (var item in ViewBag.listaDeClientes)
+                        {
+                        <tr>
+                            <td >@item.Cli_Nome</td>
+                            <td >@item.Cli_End</td>
+                            <td >@item.Cli_Bairro</td>
+                            <td >@item.Cli_Cidade</td>
+                            <td >@item.Cli_Telefone</td>
+                            <td >@item.Cli_Cnpj</td>
+                            <td >@item.Cli_Contato</td>
+                            <td >@item.Cli_Ref</td>
+                        </tr>
+                        }
+
                     </tbody>
                 </table>
             </div>

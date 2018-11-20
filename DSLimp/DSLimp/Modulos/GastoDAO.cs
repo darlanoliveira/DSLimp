@@ -1,12 +1,11 @@
-﻿using System;
+﻿using DSLimp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using DSLimp.Models;
 
 namespace DSLimp.Modulos
 {
-   /* public class GastoDAO : IGastoDAO, IDisposable
+    public class GastoDAO : IGastoDAO, IDisposable
     {
         private LojaContext contexto;
 
@@ -33,7 +32,7 @@ namespace DSLimp.Modulos
             contexto.Dispose();
         }
 
-        public IList<Gasto> produtos()
+        public IList<Gasto> gastos()
         {
             return contexto.gastos.ToList();
         }
@@ -43,5 +42,5 @@ namespace DSLimp.Modulos
             contexto.gastos.Remove(g);
             contexto.SaveChanges();
         }
-    }*/
+    }
 }
