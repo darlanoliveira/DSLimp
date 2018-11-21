@@ -62,7 +62,7 @@ namespace DSLimp.Modulos
             
         }
 
-        public static dynamic RecuperarUsuario(string email,string senha)
+      /*  public static dynamic RecuperarUsuario(string email,string senha)
         {
             
             using (var repo = new LojaContext())
@@ -74,7 +74,7 @@ namespace DSLimp.Modulos
                 usuarios = usuarios;
                 return usuarios;
             }
-        }
+        }*/
 
         public static dynamic RecuperarClientes()
         {
@@ -90,6 +90,8 @@ namespace DSLimp.Modulos
 
 
         }
+
+
 
         public static dynamic RecuperarGastos()
         {

@@ -93,6 +93,7 @@ namespace DSLimp.Controllers
         [Authorize]
         public IActionResult vendas()
         {
+            ViewBag.lista = HomeModel.RecuperarClientes();
             ViewBag.titulo = "Vendas";
 
             return View();

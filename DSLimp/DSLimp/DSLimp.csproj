@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Home\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\Home\logo.png">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\images\logo.png" />
   </ItemGroup>
 

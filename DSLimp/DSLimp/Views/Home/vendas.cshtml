@@ -63,10 +63,12 @@ Layout = "~/Views/Shared/_Layoutpagpadrao.cshtml";
                     <label for="cliente">Cliente</label>
                     <input list="clientes" name="cliente" class="form-control" placeholder="Selecione um cliente">
                     <datalist id="clientes">
-                        <option value="Cliente 1"/>
-                        <option value="Cliente 2"/>
-                        <option value="Teste 1"/>
-                        <option value="Teste 2"/>
+                        @foreach (var item in ViewBag.lista)
+                        {
+                            <option value=@item.Cli_Nome />
+                        }
+
+
                     </datalist>
                 </div> 
                 
