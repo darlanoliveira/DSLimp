@@ -1,5 +1,6 @@
 ﻿
 using DSLimp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -106,7 +107,20 @@ namespace DSLimp.Modulos
 
         }
 
-       public static dynamic SalvaGastos(string desc, double valor,byte[] notafiscal, byte[] recibo)
+        public static dynamic GastoData(DateTime inicial, DateTime final)
+        {
+            var lista = new List<dynamic>();
+            using (var repo = new LojaContext())
+            {
+                IList<Gasto> gastos = repo.gastos.Where(d => d.Gas_data >= inicial & d.Gas_data <= final).ToList();
+
+                return gastos;
+            }
+
+
+        }
+
+        public static dynamic SalvaGastos(string desc, double valor,byte[] notafiscal, byte[] recibo,DateTime datagasto)
         {
         
 
@@ -115,6 +129,7 @@ namespace DSLimp.Modulos
             g.Gas_valortotal = valor;
             g.Gas_ftnf = notafiscal;
             g.Gas_ftrec = recibo;
+            g.Gas_data = datagasto;
 
             using (var repo = new GastoDAO())
             {

@@ -22,7 +22,7 @@
 
 <body>
     <div id="main" class="container-fluid">
-        <form>
+        <form asp-controller="Home" asp-action="financeiro" method="post">
             <div class="row">
                 <div class="form-group col-md-1" style="margin-top: 25px" align="center">
                     <a asp-action="cadastrogastos">
@@ -39,12 +39,12 @@
 
                 <div class="form-group col-md-2" style="margin-top: 15px">
                     <label for="datade">Data de</label>
-                    <input type="date" class="form-control" id="datade" name="datade">
+                    <input type="date" class="form-control" id="datade" name="inicial">
                 </div>
 
                 <div class="form-group col-md-2" style="margin-top: 15px">
                     <label for="dataate">Data até</label>
-                    <input type="date" class="form-control" id="dataate" name="dataate">
+                    <input type="date" class="form-control" id="dataate" name="final">
                 </div>
 
                 <div class="checkbox col-md-2" style="margin-top: 45px">
@@ -60,22 +60,24 @@
                         <tr>
                             <th scope="col" style="text-align: center">Data</th>
                             <th scope="col" style="text-align: center">Descrição</th>
-                            <th scope="col" style="text-align: center">Tipo</th>
-                            <th scope="col" style="text-align: center">Comprovante venda</th>
+                         <!--  <th scope="col" style="text-align: center">Tipo</th> -->
+                            <th scope="col" style="text-align: center">Comprovante venda</th> 
                             <th scope="col" style="text-align: center">Recibo</th>
                             <th scope="col" style="text-align: center">Nota fiscal</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody>
+                        @foreach (var item in ViewBag.listaGasto)
+                        {
                         <tr>
-                            <td id="data" name="data"></td>
-                            <td id="descricao" name="descricao"></td>
-                            <td id="tipo" name="tipo"></td>
-                            <td id="comprovante" name="comprovante"></td>
-                            <td id="recibo" name="recibo"></td>
-                            <td id="notafiscal" name="notafiscal"></td>
+                            <td id="data" name="data">@item.Gas_data</td>
+                            <td id="descricao" name="descricao">@item.Gas_desc</td>
+                            <td id="comprovante" name="comprovante"></td> 
+                            <td id="recibo" name="recibo">@item.Gas_ftrec</td>
+                            <td id="notafiscal" name="notafiscal">@item.Gas_ftnf</td>
                         </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -87,6 +89,10 @@
                 <input type="text" name="entradatotal" id="entradatotal" readonly>
                 <label for="totallucro" style="margin-top: 3px; margin-left: 20px">Lucro total</label>
                 <input type="text" name="lucrototal" id="lucrototal" readonly>
+            </div>
+
+            <div class="btn-group col-md-1 col-md-offset-9" role="group" style="margin-top: -28px">
+                <button type="submit" name="Buscar" class="btn btn-info btn-block">Buscar</button>
             </div>
         </form>
     </div>

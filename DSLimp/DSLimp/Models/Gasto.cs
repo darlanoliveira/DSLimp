@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DSLimp.Models
 {
@@ -10,5 +11,6 @@ namespace DSLimp.Models
         public byte[] Gas_ftnf { get; internal set; }
         public byte[] Gas_ftrec { get; internal set; }
         public double Gas_valortotal { get; internal set; }
+        public DateTime Gas_data { get; internal set; }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Security.Claims;
@@ -116,9 +117,15 @@ namespace DSLimp.Controllers
             return View();
         }
         [Authorize]
-        public IActionResult Financeiro()
+        public IActionResult Financeiro(DateTime inicial, DateTime final)
         {
             ViewBag.titulo = "Financeiro";
+
+            ViewBag.listaGasto = new List<dynamic>();
+            if (inicial != null)
+            {
+                ViewBag.listaGasto = HomeModel.GastoData(inicial, final);
+            }    
 
             return View();
         }
@@ -171,7 +178,7 @@ namespace DSLimp.Controllers
         }
 
           [HttpPost]
-          public IActionResult SalvarGastos(string descricaogasto,string valorgasto,IFormFile notafiscal,IFormFile recibo)
+          public IActionResult SalvarGastos(string descricaogasto,string valorgasto,IFormFile notafiscal,IFormFile recibo,DateTime datagasto)
           {
             var valorgastoD = double.Parse(valorgasto, System.Globalization.CultureInfo.InvariantCulture);
 
@@ -185,7 +192,7 @@ namespace DSLimp.Controllers
             arquivoRec.CopyTo(flrec);
             byte[] recArr = flrec.ToArray();
 
-            HomeModel.SalvaGastos(descricaogasto, valorgastoD, nfArr, recArr);
+            HomeModel.SalvaGastos(descricaogasto, valorgastoD, nfArr, recArr,datagasto);
 
             return RedirectToAction("financeiro");
           }
