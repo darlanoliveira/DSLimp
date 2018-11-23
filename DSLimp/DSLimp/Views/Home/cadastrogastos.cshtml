@@ -73,8 +73,11 @@
                 </div>
             </div>
 
+            <!-- Divisão de tela que contém o grid -->
             <div class="panel panel-default">
+                <!-- Início da tabela/grid -->
                 <table class="table table-bordered">
+                    <!-- Insere células chaves no grid (cabeçalho das colunas) -->
                     <thead>
                         <tr>
                             <th scope="col" style="text-align: center">Data</th>
@@ -85,11 +88,12 @@
                         </tr>
                     </thead>
                     
+                    <!-- Insere linhas no grid com as informações -->
                     <tbody>
                         @foreach (var item in ViewBag.listaDeGastos)
                         {
                         <tr>
-                            <td ></td>
+                            <td>@item.Gas_data</td>
                             <td >@item.Gas_desc</td>
                             <td >@item.Gas_valortotal</td>
                             <td ></td>
