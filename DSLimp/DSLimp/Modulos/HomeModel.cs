@@ -92,7 +92,17 @@ namespace DSLimp.Modulos
 
         }
 
+        public static dynamic BuscaCliente(string cliente)
+        {
+            var lista = new List<dynamic>();
+            using (var repo = new LojaContext())
+            {
+                IList<Cliente> clientes = repo.clientes.Where(c => c.Cli_Nome.Contains(cliente)).ToList();
+                return clientes;
+            }
 
+
+        }
 
         public static dynamic RecuperarGastos()
         {

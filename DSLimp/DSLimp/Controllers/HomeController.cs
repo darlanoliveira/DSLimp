@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace DSLimp.Controllers
 {
@@ -78,6 +79,8 @@ namespace DSLimp.Controllers
         [Authorize]
         public IActionResult resumodiario()
         {
+
+
             ViewBag.titulo = "Resumo";
 
             return View();
@@ -92,11 +95,46 @@ namespace DSLimp.Controllers
         }
 
         [Authorize]
-        public IActionResult vendas()
+        public IActionResult vendas(string cliente)
         {
-            ViewBag.lista = HomeModel.RecuperarClientes();
-            ViewBag.titulo = "Vendas";
+            //Parte responsável pelos dados dos clientes
+            ViewBag.cli_nome = "";
+            ViewBag.cli_cnpj = "";
+            ViewBag.cli_end = "";
+            ViewBag.cli_ref = "";
 
+            ViewBag.cont = 0;
+            
+            if (cliente != null)
+            {
+                if (cliente.Length > 0)
+                {
+                    ViewBag.cliente = HomeModel.BuscaCliente(cliente);
+                    foreach(var item in ViewBag.cliente)
+                    {
+                        ViewBag.cli_nome = item.Cli_Nome.ToString();
+                        ViewBag.cli_cnpj = item.Cli_Cnpj.ToString();
+                        ViewBag.cli_end = item.Cli_End.ToString();
+                        ViewBag.cli_ref = item.Cli_Ref.ToString();
+                    }
+                }
+            }
+
+            ViewBag.lista = HomeModel.RecuperarClientes();
+
+            //---------------------------------------------------------------------------//
+
+            //Parte responsável por buscar os produtos
+
+            ViewBag.listaProdutos = HomeModel.RecuperarProdutos();
+            ViewBag.qtd = 0;
+
+
+            //----------------------------------------//
+
+
+            ViewBag.titulo = "Vendas";
+            
             return View();
         }
 

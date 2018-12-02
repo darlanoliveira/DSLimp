@@ -25,7 +25,7 @@ Layout = "~/Views/Shared/_Layoutpagpadrao.cshtml";
             background-color: darkred;
             text-transform: uppercase;
         }
-        
+
         .mais-button {
             color: #FFF;
             width: 30px;
@@ -41,52 +41,56 @@ Layout = "~/Views/Shared/_Layoutpagpadrao.cshtml";
             background-color: darkgreen;
         }
     </style>
-    
+
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    
-    
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
     <div id="main" class="container-fluid">
-        <form>
-            <hr/>
+        <form asp-controller="Home" asp-action="vendas" method="get" > <!--Form de busca de cliente-->
+            <hr />
             <h4>Registro de venda</h4>
-            <hr/>
+            <hr />
             <div class="row">
                 <div class="form-group col-md-2">
                     <label for="cliente">Cliente</label>
-                    <input list="clientes" name="cliente" class="form-control" placeholder="Selecione um cliente">
-                    <datalist id="clientes">
-                        @foreach (var item in ViewBag.lista)
-                        {
-                            <option value=@item.Cli_Nome />
-                        }
-
-
+                    <input list="clientes" name="cliente" class="form-control" placeholder="Selecione um cliente" value="@ViewBag.cli_nome">
+                    <datalist id="clientes">                      
+                            @foreach (var item in ViewBag.lista)
+                            {
+                                <option value=@item.Cli_Nome />
+                            }
+                                           
                     </datalist>
-                </div> 
-                
-                <div class="form-group col-md-2">
-                    <label for="campo3">CNPJ</label>
-                    <input type="text" class="form-control" id="cnpj" name="cnpj" readonly>
-                </div>
+                        <button type="submit">Buscar</button>
+                    </div>
+        </form>
+        
+       
+        <div class="form-group col-md-2">
+            <label for="campo3">CNPJ</label>
+            <input type="text" class="form-control" id="cnpj" value="@ViewBag.cli_cnpj"  readonly>
+        </div>
 
-                <div class="form-group col-md-4">
-                    <label for="campo3">Endereço</label>
-                    <input type="text" class="form-control" id="endereco" name="endereco" readonly>
-                </div>
-                
-                <div class="form-group col-md-4">
-                    <label for="campo3">Ponto de referência</label>
-                    <input type="text" class="form-control" id="pontoreferencia" name="pontoreferencia" readonly>
-                </div>
-            </div>
+        <div class="form-group col-md-4">
+            <label for="campo3">Endereço</label>
+            <input type="text" class="form-control" id="endereco" value="@ViewBag.cli_end"  readonly>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="campo3">Ponto de referência</label>
+            <input type="text" class="form-control" id="pontoreferencia" value="@ViewBag.cli_ref" readonly>
+        </div>
+      
+    </div>
             
             <hr/>
             
@@ -94,22 +98,29 @@ Layout = "~/Views/Shared/_Layoutpagpadrao.cshtml";
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col" style="text-align:center">Código do produto</th>
-                            <th scope="col" style="text-align:center">Descrição do produto</th>
+                        
+                            <th scope="col" style="text-align:center">Nome do produto / Estoque</th>
                             <th scope="col" style="text-align:center">Quantidade</th>
                             <th scope="col" style="text-align:center">Valor</th>
-                            <th scope="col" style="text-align:center">Em estoque</th>
-                            <th scope="col" style="text-align:center">Saldo em estoque após venda</th>
+                            <th scope="col" style="text-align:center">Em estoque</th> 
+                        <!--    <th scope="col" style="text-align:center">Saldo em estoque após venda</th> -->
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td id="codigoproduto" name="codigoproduto" width="165px"><input list="codigosprodutos" name="codigoproduto" class="form-control" placeholder="Selecione o código" style="width:165px"></td>
-                            <td id="descricaoproduto" name="descricaoproduto"></td>
-                            <td id="quantidade" name="quantidade" width="118px"><button class="menos-button">-</button><a> </a><input type="text" name="qtd" id="qtd" style="width:30px" readonly><a> </a><button   class="mais-button">+</button></td>
+                            <td id="nomeproduto" name="nomeproduto" ><input list="nomeproduto" name="nomeproduto" class="form-control" placeholder="Selecione o nome"  ></td>
+                            <datalist id="nomeproduto" onblur="Auto()">
+                                @foreach (var item in ViewBag.listaProdutos)
+                                {
+                                    <option value= "@item.Prod_Desc  (@item.Prod_Qtd)"/>
+                                   
+                                }
+
+                            </datalist>
+                            <td id="quantidade" name="quantidade" width="118px"><input type="number"></td>
                             <td id="valor" name="valor" width="200px"></td>
-                            <td id="emestoque" name="emestoque" width="118px"></td>
-                            <td id="saldoestoque" name="saldoestoque" width="300px"></td>
+                            <td id="emestoque" name="emestoque" width="118px"></td> 
+                       <!--     <td id="saldoestoque" name="saldoestoque" width="300px"></td> -->
                         </tr>
                     </tbody>
                 </table>
@@ -135,8 +146,13 @@ Layout = "~/Views/Shared/_Layoutpagpadrao.cshtml";
                     <option value="cod2"/>
                 </datalist>
             </div>
-        </form>
+        
     </div>
+
+
+
 </body>
+
+
 
 </html>
