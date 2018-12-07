@@ -55,42 +55,66 @@ Layout = "~/Views/Shared/_Layoutpagpadrao.cshtml";
 
 <body>
     <div id="main" class="container-fluid">
-        <form asp-controller="Home" asp-action="vendas" method="get" > <!--Form de busca de cliente-->
             <hr />
             <h4>Registro de venda</h4>
             <hr />
             <div class="row">
                 <div class="form-group col-md-2">
-                    <label for="cliente">Cliente</label>
-                    <input list="clientes" name="cliente" class="form-control" placeholder="Selecione um cliente" value="@ViewBag.cli_nome">
-                    <datalist id="clientes">                      
+                    <form asp-controller="Home" asp-action="vendas" method="get">
+                        <!--Form de busca de cliente-->
+                        <label for="cliente">Cliente</label>
+                        <input list="clientes" name="cliente" class="form-control" placeholder="Selecione um cliente" value="@ViewBag.cli_nome">
+                        <datalist id="clientes">
                             @foreach (var item in ViewBag.lista)
                             {
                                 <option value=@item.Cli_Nome />
                             }
-                                           
-                    </datalist>
-                        <button type="submit">Buscar</button>
-                    </div>
-        </form>
-        
-       
-        <div class="form-group col-md-2">
-            <label for="campo3">CNPJ</label>
-            <input type="text" class="form-control" id="cnpj" value="@ViewBag.cli_cnpj"  readonly>
-        </div>
 
-        <div class="form-group col-md-4">
-            <label for="campo3">Endereço</label>
-            <input type="text" class="form-control" id="endereco" value="@ViewBag.cli_end"  readonly>
-        </div>
+                        </datalist>
+                    </form>
+                </div>
+                <button type="submit" class="glyphicon glyphicon-search" id="buscacliente" style="width:30px ; height:30px; margin-top:26px; margin-left:-10px"></button>
 
-        <div class="form-group col-md-4">
-            <label for="campo3">Ponto de referência</label>
-            <input type="text" class="form-control" id="pontoreferencia" value="@ViewBag.cli_ref" readonly>
-        </div>
-      
-    </div>
+                <div class="form-group col-md-2">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" class="form-control" id="cnpj" value="@ViewBag.cli_cnpj" readonly>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" class="form-control" id="endereco" value="@ViewBag.cli_end" readonly>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="pontoreferencia">Ponto de referência</label>
+                    <input type="text" class="form-control" id="pontoreferencia" value="@ViewBag.cli_ref" readonly>
+                </div>
+
+                <div class="form-group col-md-2" style="margin-top:-15px">
+                    <label for="codproduto">Código do produto</label>
+                    <input type="text" name="codproduto" class="form-control" placeholder="Digite o código aqui" value="" />
+                </div>
+                <button type="submit" class="glyphicon glyphicon-search" id="buscacodigo" style="width:30px ; height:30px; margin-top:11px;margin-left:-10px"></button>
+
+                <div class="form-group col-md-2" style="margin-top:-15px">
+                    <label for="nomeproduto">Nome do produto</label>
+                    <input list="produtos" name="nomeproduto" class="form-control" value="" readonly/>
+                </div>
+
+                <div class="form-group col-md-2" style="margin-top:-15px">
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" name="quantidade" class="form-control" placeholder="Quantidade" />
+                </div>
+
+                <div class="btn-group col-md-1" role="group" style="margin-top:8px">
+                    <button type="submit" name="confirmar" value="1" class="btn btn-info btn-block">Confirmar</button>
+                </div>
+
+                <div class="btn-group col-md-1" role="group" style="margin-top:8px">
+                    <button type="submit" class="btn btn-default btn-block" name="cancelar" value="1">Cancelar</button>
+                </div>
+
+            </div>
             
             <hr/>
             
@@ -98,29 +122,20 @@ Layout = "~/Views/Shared/_Layoutpagpadrao.cshtml";
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                        
-                            <th scope="col" style="text-align:center">Nome do produto / Estoque</th>
+                            <th scope="col" style="text-align:center">Código do produto</th>
+                            <th scope="col" style="text-align:center">Nome do produto</th>
                             <th scope="col" style="text-align:center">Quantidade</th>
                             <th scope="col" style="text-align:center">Valor</th>
                             <th scope="col" style="text-align:center">Em estoque</th> 
-                        <!--    <th scope="col" style="text-align:center">Saldo em estoque após venda</th> -->
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td id="nomeproduto" name="nomeproduto" ><input list="nomeproduto" name="nomeproduto" class="form-control" placeholder="Selecione o nome"  ></td>
-                            <datalist id="nomeproduto" onblur="Auto()">
-                                @foreach (var item in ViewBag.listaProdutos)
-                                {
-                                    <option value= "@item.Prod_Desc  (@item.Prod_Qtd)"/>
-                                   
-                                }
-
-                            </datalist>
-                            <td id="quantidade" name="quantidade" width="118px"><input type="number"></td>
+                            <td id="codproduto" name="codproduto" width="200px"></td>
+                            <td id="nomeproduto" name="nomeproduto"></td>
+                            <td id="quantidade" name="quantidade" width="200px"></td>
                             <td id="valor" name="valor" width="200px"></td>
-                            <td id="emestoque" name="emestoque" width="118px"></td> 
-                       <!--     <td id="saldoestoque" name="saldoestoque" width="300px"></td> -->
+                            <td id="emestoque" name="emestoque" width="200px"></td> 
                         </tr>
                     </tbody>
                 </table>
@@ -132,27 +147,15 @@ Layout = "~/Views/Shared/_Layoutpagpadrao.cshtml";
                 <label for="totalvalor" style="margin-top: 3px; margin-left: 20px">Valor total</label>
                 <input type="text" name="valortotal" id="valortotal" readonly>
 
-                <div class="btn-group col-md-1 col-md-offset-10" role="group" style="margin-top: -28px">
-                    <button type="submit" name="confirmar" value="1" class="btn btn-info btn-block">Confirmar</button>
+                <div class="btn-group col-md-1 col-md-offset-10" role="group" style="margin-top:-28px">
+                    <button type="submit" name="salvar" value="1" class="btn btn-info btn-block">Salvar</button>
                 </div>
 
-                <div class="btn-group col-md-1" role="group" style="margin-top: -28px">
-                    <button type="submit" class="btn btn-default btn-block" name="cancelar" value="1">Cancelar</button>
+                <div class="btn-group col-md-1" role="group" style="margin-top:-28px">
+                    <button type="button" class="btn btn-default btn-block" name="voltar" value="1" onclick="history.go(-1)">Voltar</button>
                 </div>
-                <datalist id="codigosprodutos">
-                    <option value="teste"/>
-                    <option value="teste2"/>
-                    <option value="cod"/>
-                    <option value="cod2"/>
-                </datalist>
             </div>
         
     </div>
-
-
-
 </body>
-
-
-
 </html>
