@@ -68,6 +68,14 @@
                 <button type="submit" class="btn btn-default btn-md" name="btnpesquisar" value="1" style="height:35px">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </button>
+
+                <div class="btn-group col-md-1" role="group">
+                    <button type="submit" name="confirmar" value="1" class="btn btn-info btn-block">Confirmar</button>
+                </div>
+
+                <div class="btn-group col-md-1" role="group">
+                    <button type="submit" class="btn btn-default btn-block" name="cancelar" value="1">Cancelar</button>
+                </div>
             </div>
 
             <div class="panel panel-default">
@@ -109,7 +117,7 @@
             </div>
 
             <div class="btn-group col-md-1" role="group">
-                <button type="submit" class="btn btn-default btn-block" name="btncancelar" value="1">Cancelar</button>
+                <button type="button" class="btn btn-default btn-block" name="voltar" value="1" onclick="history.go(-1)">Voltar</button>
             </div>
 
         </form>
