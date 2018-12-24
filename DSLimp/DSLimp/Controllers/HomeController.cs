@@ -87,8 +87,41 @@ namespace DSLimp.Controllers
         }
 
         [Authorize]
-        public IActionResult estoque()
+        public IActionResult estoque(string codproduto,int buscacodigo,int confirmar,int cancelar,int quantidade,int somaproduto,int codigop)
         {
+            ViewBag.listaProd = new List<dynamic>();
+            ViewBag.qtdProduto = quantidade;
+            ViewBag.vendaCalc = 0.0;
+            ViewBag.custoCalc = 0.0;
+            ViewBag.lucroCalc = 0.0;
+            ViewBag.somaProd = 0;
+            ViewBag.idProd = 0;
+
+            if (buscacodigo == 1)
+            {
+               var lista = HomeModel.BuscaProduto(codproduto);
+               foreach(var item in lista)
+                {
+                    ViewBag.nomeProduto = item.Prod_Desc;                  
+                    ViewBag.idProd = (int)item.Id_Pro;
+
+                }
+                
+            }
+
+            if(confirmar > 1)
+            {
+                ViewBag.listaProd = HomeModel.BuscaProduto(confirmar);
+
+            }
+
+            if(somaproduto > 0)
+            {
+                HomeModel.AtualizaProdutoQtd(somaproduto, codigop);
+            }
+
+
+
             ViewBag.titulo = "Estoque";
 
             return View();

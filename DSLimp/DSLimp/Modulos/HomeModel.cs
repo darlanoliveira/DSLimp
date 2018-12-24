@@ -63,19 +63,20 @@ namespace DSLimp.Modulos
             
         }
 
-      /*  public static dynamic RecuperarUsuario(string email,string senha)
-        {
-            
-            using (var repo = new LojaContext())
-            {
+ 
+        /*  public static dynamic RecuperarUsuario(string email,string senha)
+          {
 
-                IList<LoginViewModel> usuarios = repo.usuarios
-                                                 .Where(u => u.Email == email && u.Senha == senha)
-                                                 .ToList();
-                usuarios = usuarios;
-                return usuarios;
-            }
-        }*/
+              using (var repo = new LojaContext())
+              {
+
+                  IList<LoginViewModel> usuarios = repo.usuarios
+                                                   .Where(u => u.Email == email && u.Senha == senha)
+                                                   .ToList();
+                  usuarios = usuarios;
+                  return usuarios;
+              }
+          }*/
 
         public static dynamic RecuperarClientes()
         {
@@ -103,6 +104,32 @@ namespace DSLimp.Modulos
 
 
         }
+
+        public static dynamic BuscaProduto(string codigo)
+        {
+            
+            using (var repo = new LojaContext())
+            {
+                IList<Produto> lista_prod = repo.produtos.Where(c => c.Prod_Cod.Contains(codigo)).ToList();
+                return lista_prod;
+            }
+
+
+        }
+
+        public static dynamic BuscaProduto(int codigo)
+        {
+
+            using (var repo = new LojaContext())
+            {
+                IList<Produto> lista_prod = repo.produtos.Where(c => c.Id_Pro == codigo).ToList();
+                return lista_prod;
+            }
+
+
+        }
+
+     
 
         public static dynamic RecuperarGastos()
         {
@@ -147,6 +174,18 @@ namespace DSLimp.Modulos
             }
 
             return null;
+        }
+
+        public static dynamic AtualizaProdutoQtd(int qtd,int codigo)
+        {
+            using (var repo = new LojaContext())
+            {
+                Produto p = repo.produtos.First(q => q.Id_Pro == codigo);
+                p.Prod_Qtd = qtd;
+                repo.SaveChanges();
+            }
+            return null;
+
         }
     }
 }

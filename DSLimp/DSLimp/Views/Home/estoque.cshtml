@@ -22,90 +22,110 @@
 
 <body>
     <div id="main" class="container-fluid">
-        <form>
+        <form asp-action="estoque" asp-controller="Home" method="post">
             <div class="row">
-               <div class="form-group col-md-1" style="margin-top: 5px; margin-left: -20px" align="center">
-                    <span class="glyphicon glyphicon-save-file" aria-hidden="true" name="relatorioexcel"></span><BR></BR>
+                <div class="form-group col-md-1" style="margin-top: 5px; margin-left: -20px" align="center">
+                    <a> <span class="glyphicon glyphicon-save-file" aria-hidden="true" name="relatorioexcel"></span></a><BR></BR>
                     <label>Relatório excel</label>
                 </div>
             </div>
-            
-            <hr style="margin-top: -15px"/>
-            
+
+            <hr style="margin-top: -15px" />
+
             <h4>Registro de entrada de produto</h4>
 
-            <hr/>
+            <hr />
 
             <div class="row">
                 <div class="form-group col-md-2" style="margin-top:-15px">
                     <label for="codproduto">Código do produto</label>
                     <input type="text" name="codproduto" class="form-control" placeholder="Digite o código aqui" value="" />
                 </div>
-                <button type="submit" class="glyphicon glyphicon-search" id="buscacodigo" style="width:30px ; height:30px; margin-top:11px;margin-left:-10px"></button>
-
-                <div class="form-group col-md-2" style="margin-top:-15px">
-                    <label for="nomeproduto">Nome do produto</label>
-                    <input list="produtos" name="nomeproduto" class="form-control" value="" readonly />
-                </div>
-
-                <div class="form-group col-md-2" style="margin-top:-15px">
-                    <label for="quantidade">Quantidade</label>
-                    <input type="number" name="quantidade" class="form-control" placeholder="Quantidade" />
-                </div>
-
-                <div class="btn-group col-md-1" role="group" style="margin-top:8px">
-                    <button type="submit" name="confirmar" value="1" class="btn btn-info btn-block">Confirmar</button>
-                </div>
-
-                <div class="btn-group col-md-1" role="group" style="margin-top:8px">
-                    <button type="submit" class="btn btn-default btn-block" name="cancelar" value="1">Cancelar</button>
-                </div>
-            </div>
-            
-            <hr/>
-            <div class="panel panel-default">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col" style="text-align:center">Código do produto</th>
-                            <th scope="col" style="text-align:center">Nome do produto</th>
-                            <th scope="col" style="text-align:center">Quantidade</th>
-                            <th scope="col" style="text-align:center">Valor de custo</th>
-                            <th scope="col" style="text-align:center">Valor de venda</th>
-                            <th scope="col" style="text-align:center">Em estoque</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td id="codigoproduto" name="codigoproduto" width="165px"></td>
-                            <td id="descricaoproduto" name="nomeproduto"></td>
-                            <td id="quantidade" name="quantidade" width="118px"></td>
-                            <td id="valorcusto" name="valorcusto" width="200px"></td>
-                            <td id="valorvenda" name="valorvenda" width="200px"></td>
-                            <td id="emestoque" name="emestoque" width="118px"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="form-group">
-                <label for="totalcusto" style="margin-top: 3px">Custo total</label>
-                <input type="text" name="custototal" id="custototal" readonly>
-                <label for="totalvenda" style="margin-top: 3px; margin-left: 20px">Venda total</label>
-                <input type="text" name="vendatotal" id="vendatotal" readonly>
-                <label for="totallucro" style="margin-top: 3px; margin-left: 20px">Lucro total</label>
-                <input type="text" name="lucrototal" id="lucrototal" readonly>
-
-                <div class="btn-group col-md-1 col-md-offset-10" role="group" style="margin-top:-28px">
-                    <button type="submit" name="salvar" value="1" class="btn btn-info btn-block">Salvar</button>
-                </div>
-
-                <div class="btn-group col-md-1" role="group" style="margin-top:-28px">
-                    <button type="button" class="btn btn-default btn-block" name="voltar" value="1" onclick="history.go(-1)">Voltar</button>
-                </div>
-            </div>
+                <button type="submit" class="glyphicon glyphicon-search" id="buscacodigo" name="buscacodigo" value="1" style="width:30px ; height:30px; margin-top:11px;margin-left:-10px"></button>
         </form>
+
+        <div class="form-group col-md-2" style="margin-top:-15px">
+            <form asp-action="estoque" asp-controller="Home" method="post">
+                <label for="nomeproduto">Nome do produto</label>
+                <input list="produtos" name="nomeproduto" class="form-control" value="@ViewBag.nomeProduto" readonly />
+        </div>
+
+        <div class="form-group col-md-2" style="margin-top:-15px">
+            <label for="quantidade">Quantidade</label>
+            <input type="number" name="quantidade" class="form-control" placeholder="Quantidade" value="" />
+        </div>
+
+        <div class="btn-group col-md-1" role="group" style="margin-top:8px">
+
+            <button type="submit" name="confirmar" value="@ViewBag.idProd" class="btn btn-info btn-block">Confirmar</button>
+        </div>
+
+        <div class="btn-group col-md-1" role="group" style="margin-top:8px">
+            <button type="submit" class="btn btn-default btn-block" name="cancelar" value="2">Cancelar</button>
+        </div>
     </div>
+    </form>
+
+    <hr />
+    <div class="panel panel-default">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align:center">Código do produto</th>
+                    <th scope="col" style="text-align:center">Nome do produto</th>
+                    <th scope="col" style="text-align:center">Quantidade</th>
+                    <th scope="col" style="text-align:center">Valor de custo</th>
+                    <th scope="col" style="text-align:center">Valor de venda</th>
+                    <th scope="col" style="text-align:center">Em estoque</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.listaProd)
+                {
+                    <tr>
+                        <td id="codigoproduto" name="codigoproduto" width="165px">@item.Prod_Cod</td>
+                        <td id="descricaoproduto" name="nomeproduto">@item.Prod_Desc</td>
+                        <td id="quantidade" name="quantidade" width="118px">@item.Prod_Qtd</td>
+                        <td id="valorcusto" name="valorcusto" width="200px">@item.Prod_Val_Cus</td>
+                        <td id="valorvenda" name="valorvenda" width="200px">@item.Prod_Val_Ven</td>
+                        <td id="emestoque" name="emestoque" width="118px">@(item.Prod_Qtd + ViewBag.qtdProduto)</td>
+                    </tr>
+                    <!--
+
+                       @(ViewBag.idProd = @item.Id_Pro);
+                        @(ViewBag.somaProd = item.Prod_Qtd + ViewBag.qtdProduto );
+                        @(ViewBag.vendaCalc = (item.Prod_Val_Ven* (item.Prod_Qtd + ViewBag.qtdProduto)));
+                        @(ViewBag.custoCalc = (item.Prod_Val_Cus*(item.Prod_Qtd + ViewBag.qtdProduto)));
+                        @(ViewBag.lucroCalc = (ViewBag.vendaCalc- ViewBag.custoCalc));
+                        -->
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-group">
+        <label for="totalcusto" style="margin-top: 3px">Custo total</label>
+        <input type="text" name="custototal" id="custototal" value="@ViewBag.custoCalc" readonly>
+        <label for="totalvenda" style="margin-top: 3px; margin-left: 20px">Venda total</label>
+        <input type="text" name="vendatotal" id="vendatotal" value="@ViewBag.vendaCalc" readonly>
+        <label for="totallucro" style="margin-top: 3px; margin-left: 20px">Lucro total</label>
+        <input type="text" name="lucrototal" id="lucrototal" value="@ViewBag.lucroCalc" readonly>
+
+        <form asp-action="estoque" asp-controller="Home" method="post">
+            <div class="btn-group col-md-1 col-md-offset-10" role="group" style="margin-top:-28px">
+                <input type="hidden" name="somaproduto" value="@ViewBag.somaProd" readonly>
+                <input type="hidden" name="codigop" value="@ViewBag.idProd" readonly>
+                <button type="submit" name="salvar" value="1" class="btn btn-info btn-block">Salvar</button>
+            </div>
+
+
+            <div class="btn-group col-md-1" role="group" style="margin-top:-28px">
+                <button type="button" class="btn btn-default btn-block" name="voltar" value="1" onclick="history.go(-1)">Voltar</button>
+            </div>
+    </div>
+
+    </div>
+    </form>
 </body>
 
 </html>
