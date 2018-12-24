@@ -103,6 +103,12 @@ namespace DSLimp.Controllers
             ViewBag.cli_end = "";
             ViewBag.cli_ref = "";
 
+            //Parte responsável pelos dados do produto
+            ViewBag.cli_nome = "";
+            ViewBag.cli_cnpj = "";
+            ViewBag.cli_end = "";
+            ViewBag.cli_ref = "";
+
             ViewBag.cont = 0;
             
             if (cliente != null)
