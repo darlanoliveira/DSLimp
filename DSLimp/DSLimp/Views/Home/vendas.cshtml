@@ -60,15 +60,15 @@ Layout = "~/Views/Shared/_Layoutpagpadrao.cshtml";
                     <input type="text" class="form-control" id="pontoreferencia" value="@ViewBag.cli_ref" readonly>
                 </div>
                 <form asp-controller="Home" asp-action="vendas" method="post">
-                    <div class="form-group col-md-2" style="margin-top:-15px">
+                    <div class="form-group col-md-11" style="margin-top:-15px">
                         <label for="codproduto">Código do produto</label>
                         <input type="text" name="codproduto" class="form-control" placeholder="Digite o código aqui" value="" />
                     </div>
                     <button type="submit" class="glyphicon glyphicon-search" id="buscacodigo" style="width:30px ; height:30px; margin-top:11px;margin-left:-10px"></button>
                 </form>
-                    <div class="form-group col-md-2" style="margin-top:-15px">
+                    <div class="form-group col-md-2" style="margin-top:-15px; margin-left:80px">
                         <label for="nomeproduto">Nome do produto</label>
-                        <input list="produtos" name="nomeproduto" class="form-control" value="" readonly />
+                        <input name="nomeproduto" class="form-control" value="" readonly />
                     </div>
 
                     <div class="form-group col-md-2" style="margin-top:-15px">
